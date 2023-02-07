@@ -1,0 +1,35 @@
+{
+  "jupyter.lab.setting-icon-class": "jp-RunIcon",
+  "jupyter.lab.setting-icon-label": "Executor",
+  "title": "executor_jlab",
+  "description": "executor_jlab settings.",
+  "type": "object",
+  "properties": {
+    "executors": {
+      "description": "The list of the executors.",
+      "title": "Executor",
+      "type": "array",
+      "items": { "$ref": "#/definitions/executor" },
+      "default": [
+        {
+            "name": "voila",
+            "command": "voila {path} --no-browser & ngrok http 8866 && fg 1"
+        },
+        {
+            "name": "python",
+            "command": "python {path} {args}"
+        }
+      ]
+    }
+  },
+  "definitions": {
+    "executor": {
+      "properties": {
+        "command": { "type": "string" },
+        "name": { "type": "string" }
+      },
+      "required": [ "name", "command" ],
+      "type": "object"
+    }
+  }
+}
